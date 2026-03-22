@@ -1,0 +1,5 @@
+1)Remove the password sended in the response in login api
+2)Use a global error handler and custom error handler functions.
+3)Use the service layer dont put everything inside the controller its the service layer that does all the
+working part, the controller is just for taking the request and sending the response.
+4)Use docker for containerization
