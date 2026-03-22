@@ -1,3 +1,4 @@
-export declare const registerUser: import("express").RequestHandler<import("express-serve-static-core").ParamsDictionary, any, any, import("qs").ParsedQs, Record<string, any>>;
-export declare const loginUser: import("express").RequestHandler<import("express-serve-static-core").ParamsDictionary, any, any, import("qs").ParsedQs, Record<string, any>>;
+import type { Request, Response } from "express";
+export declare const registerUser: (req: Request, res: Response, next: import("express").NextFunction) => Promise<void>;
+export declare const loginUser: (req: Request, res: Response, next: import("express").NextFunction) => Promise<void>;
 //# sourceMappingURL=controller.d.ts.map

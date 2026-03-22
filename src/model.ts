@@ -1,12 +1,5 @@
-import mongoose, { Document, Schema } from "mongoose";
-
-interface IUser extends Document {
-  name: string;
-  email: string;
-  password: string;
-  role: string;
-  playlist: string[];
-}
+import mongoose, { Schema } from "mongoose";
+import type { IUser } from "./interface.js";
 
 const schema: Schema<IUser> = new Schema(
   {
@@ -36,5 +29,14 @@ const schema: Schema<IUser> = new Schema(
   },
   { timestamps: true },
 );
+
+//If you send the user doc as a json as a response the password field will be removed from it best industrial practise
+
+schema.set("toJSON", {
+  transform: (_doc, ret: any) => {
+    delete ret.password;
+    return ret;
+  },
+});
 
 export const User = mongoose.model<IUser>("User", schema);

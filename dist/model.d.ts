@@ -1,11 +1,5 @@
-import mongoose, { Document } from "mongoose";
-interface IUser extends Document {
-    name: string;
-    email: string;
-    password: string;
-    role: string;
-    playlist: string[];
-}
+import mongoose from "mongoose";
+import type { IUser } from "./interface.js";
 export declare const User: mongoose.Model<IUser, {}, {}, {}, mongoose.Document<unknown, {}, IUser, {}, mongoose.DefaultSchemaOptions> & IUser & Required<{
     _id: mongoose.Types.ObjectId;
 }> & {
@@ -13,5 +7,4 @@ export declare const User: mongoose.Model<IUser, {}, {}, {}, mongoose.Document<u
 } & {
     id: string;
 }, any, IUser>;
-export {};
 //# sourceMappingURL=model.d.ts.map

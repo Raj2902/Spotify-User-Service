@@ -1,5 +1,9 @@
-1)Remove the password sended in the response in login api
-2)Use a global error handler and custom error handler functions.
+1)Remove the password sended in the response in login and register api (done)
+2)Use a global error handler and custom error handler functions (App Error and API Error). (done)
 3)Use the service layer dont put everything inside the controller its the service layer that does all the
-working part, the controller is just for taking the request and sending the response.
+working part, the controller is just for taking the request and sending the response. (done)
 4)Use docker for containerization
+5)Swagger for api documentation
+6)GraphQl for advance filtered api request sending only the required asked data.
+7)Write the test cases using jest
+8)Use a salt for password encryption

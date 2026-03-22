@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import userRoutes from "./route.js";
+import { errorHandler } from "./middleware/errorHandler.js";
 dotenv.config();
 const connectDB = async () => {
     try {
@@ -20,6 +21,7 @@ app.use("/api/v1", userRoutes);
 app.get("/", (req, res) => {
     res.send("Server is working");
 });
+app.use(errorHandler);
 const port = process.env.PORT || 5000;
 app.listen(5000, () => {
     console.log(`Server is running on port ${port}`);
