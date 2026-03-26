@@ -1,4 +1,5 @@
 import { Document } from "mongoose";
+import type { Request } from "express";
 export interface IUser extends Document {
     name: string;
     email: string;
@@ -14,5 +15,8 @@ export interface registerParams {
 export interface loginParams {
     email: string;
     password: string;
+}
+export interface AuthenticatedRequest extends Request {
+    user?: IUser | null;
 }
 //# sourceMappingURL=interface.d.ts.map

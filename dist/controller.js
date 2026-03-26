@@ -10,4 +10,8 @@ export const loginUser = asyncHandler(async (req, res) => {
     const { token, user } = await loginService({ email, password });
     res.status(201).json({ message: "Logged In", user, token });
 });
+export const myProfile = asyncHandler(async (req, res) => {
+    const user = req.user;
+    return res.status(200).json(user);
+});
 //# sourceMappingURL=controller.js.map
