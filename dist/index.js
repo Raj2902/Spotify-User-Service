@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import userRoutes from "./route.js";
 import { errorHandler } from "./middleware/errorHandler.js";
+import cors from "cors";
 dotenv.config();
 const connectDB = async () => {
     try {
@@ -16,6 +17,7 @@ const connectDB = async () => {
     }
 };
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use("/api/v1", userRoutes);
 app.get("/", (req, res) => {

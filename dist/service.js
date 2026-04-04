@@ -29,4 +29,18 @@ export const registerService = async ({ name, email, password, }) => {
     });
     return { token, user };
 };
+export const addToPlayListService = async ({ userId, songId, }) => {
+    const user = await User.findById(userId);
+    if (!user)
+        throw new AppError("No user with this id", 404);
+    if (user.playlist.includes(songId)) {
+        const index = user.playlist.indexOf(songId);
+        user.playlist.splice(index, 1);
+        await user.save();
+        return { removed: true };
+    }
+    user.playlist.push(songId);
+    await user.save();
+    return { removed: false };
+};
 //# sourceMappingURL=service.js.map

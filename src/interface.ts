@@ -1,4 +1,8 @@
-import { Document } from "mongoose";
+import {
+  Document,
+  Types,
+  type StringExpressionOperatorReturningBoolean,
+} from "mongoose";
 import type { Request } from "express";
 
 export interface IUser extends Document {
@@ -18,6 +22,11 @@ export interface registerParams {
 export interface loginParams {
   email: string;
   password: string;
+}
+
+export interface addToPlayListParams {
+  userId: Types.ObjectId;
+  songId: string;
 }
 
 export interface AuthenticatedRequest extends Request {

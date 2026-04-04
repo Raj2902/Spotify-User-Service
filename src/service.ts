@@ -2,7 +2,12 @@ import { User } from "./model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { AppError } from "./utils/AppError.js";
-import type { IUser, loginParams, registerParams } from "./interface.js";
+import type {
+  addToPlayListParams,
+  IUser,
+  loginParams,
+  registerParams,
+} from "./interface.js";
 
 export const loginService = async ({
   email,
@@ -22,6 +27,7 @@ export const loginService = async ({
 
   return { token, user };
 };
+
 export const registerService = async ({
   name,
   email,
@@ -44,4 +50,28 @@ export const registerService = async ({
   });
 
   return { token, user };
+};
+
+export const addToPlayListService = async ({
+  userId,
+  songId,
+}: addToPlayListParams) => {
+  const user = await User.findById(userId);
+
+  if (!user) throw new AppError("No user with this id", 404);
+
+  if (user.playlist.includes(songId)) {
+    const index = user.playlist.indexOf(songId);
+
+    user.playlist.splice(index, 1);
+
+    await user.save();
+
+    return { removed: true };
+  }
+  user.playlist.push(songId);
+
+  await user.save();
+
+  return { removed: false };
 };
