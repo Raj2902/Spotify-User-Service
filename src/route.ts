@@ -9,9 +9,9 @@ import { isAuth } from "./middleware/authentication.js";
 
 const router = express.Router();
 
-router.post("/user/register", registerUser);
-router.post("/user/login", loginUser);
-router.get("/user/me", isAuth, myProfile);
+router.post("/register", registerUser);
+router.post("/login", loginUser);
+router.get("/me", isAuth, myProfile);
 router.post("/song/:id", isAuth, addToPlaylist);
 
 export default router;
