@@ -18,7 +18,7 @@ export const registerUser = asyncHandler(
 export const loginUser = asyncHandler(async (req: Request, res: Response) => {
   const { email, password } = req.body;
   const { token, user } = await loginService({ email, password });
-  res.status(201).json({ message: "Logged In", user, token });
+  res.status(200).json({ message: "Logged In", user, token });
 });
 
 export const myProfile = asyncHandler(
