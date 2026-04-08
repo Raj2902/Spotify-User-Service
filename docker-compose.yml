@@ -1,0 +1,9 @@
+services:
+  user:
+    build: .
+    deploy:
+      replicas: 4
+    env_file:
+      - .env
+    ports:
+      - "5000-5003:5000"
