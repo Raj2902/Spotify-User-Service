@@ -6,8 +6,6 @@ import {
   addToPlayListService,
 } from "./service.js";
 import type { AuthenticatedRequest, IUser } from "./interface.js";
-import { AppError } from "./utils/AppError.js";
-import { User } from "./model.js";
 
 export const registerUser = asyncHandler(
   async (req: Request, res: Response) => {
