@@ -33,7 +33,7 @@ app.use(express.json());
 app.use("/api/v1/user", userRoutes);
 
 app.get("/", (req, res) => {
-  res.send(`User service is running ${!!process.env.MONGO_URI}`);
+  res.send(`${!!process.env.MONGO_URI ? "found" : "not found"}`);
 });
 
 app.use(errorHandler);
