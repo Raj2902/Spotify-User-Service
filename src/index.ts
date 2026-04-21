@@ -12,6 +12,7 @@ dotenv.config();
 
 const connectDB = async () => {
   try {
+    console.log("connecting url:", process.env.MONGO_URI);
     mongoose.connect(process.env.MONGO_URI as string, {
       dbName: "Spotify",
     });
