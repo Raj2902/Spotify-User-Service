@@ -12,7 +12,6 @@ dotenv.config();
 
 const connectDB = async () => {
   try {
-    console.log("connecting url:", process.env.MONGO_URI);
     mongoose.connect(process.env.MONGO_URI as string, {
       dbName: "Spotify",
     });
@@ -34,7 +33,7 @@ app.use(express.json());
 app.use("/api/v1/user", userRoutes);
 
 app.get("/", (req, res) => {
-  res.send("User service is running");
+  res.send(`User service is running ${!!process.env.MONGO_URI}`);
 });
 
 app.use(errorHandler);
