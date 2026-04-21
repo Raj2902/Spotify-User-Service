@@ -19,6 +19,7 @@ const connectDB = async () => {
         console.log(error);
     }
 };
+connectDB();
 const app = express();
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
@@ -26,12 +27,11 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/v1/user", userRoutes);
 app.get("/", (req, res) => {
-    res.send(`${!!process.env.MONGO_URI ? "found" : "not found"}`);
+    res.send(`User service is running`);
 });
 app.use(errorHandler);
 const port = process.env.PORT || 5000;
 app.listen(5000, () => {
     console.log(`Server is running on port ${port}`);
-    connectDB();
 });
 //# sourceMappingURL=index.js.map
